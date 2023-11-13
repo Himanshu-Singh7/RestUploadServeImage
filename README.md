@@ -1,2 +1,2 @@
 # RestUploadServeImage
-Rest API to upload and Serve  image
+Rest API to Upload and Serve Images
