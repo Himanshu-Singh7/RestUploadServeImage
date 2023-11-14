@@ -19,28 +19,23 @@ public class FileServiceImpl implements FileService {
 	public String uploadImage(String path, MultipartFile file) throws IOException {
 	
 		//Get File name 
-		
 		 String name = file.getOriginalFilename();
+		
 		// Random name generate 
 		 String randamId = UUID.randomUUID().toString();
 		 String filName1 = randamId.concat(name.substring(name.lastIndexOf(".")));
 		
 		 
 		 // Full Path
-		 
 		 String filePath = path+ File.separator+filName1; 
-		 
-		 
-		// create folder if not created
-		 
+		 // create folder if not created
 		 File f = new File(path);
 		 if(!f.exists()) {
 			
-			 f.mkdir();
+		     f.mkdir();
 		 }
 		
 		// File Copy
-		 
 		 Files.copy(file.getInputStream(),Paths.get(filePath));
 		
 		
