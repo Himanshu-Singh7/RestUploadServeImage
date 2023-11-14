@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -41,16 +40,12 @@ public class FileController {
 			return new ResponseEntity<FileResponse>(
 					new FileResponse(null, "Image is not uploaded due to some Resaon !! "),
 					HttpStatus.INTERNAL_SERVER_ERROR);
-
 		}
-
-		return new ResponseEntity<FileResponse>(new FileResponse(filename, "Image upload successfully !! "),
+             return new ResponseEntity<FileResponse>(new FileResponse(filename, "Image upload successfully !! "),
 				HttpStatus.OK);
 
 	}
-	
 	// Method to serve file
-	
 	@GetMapping(value = "/profiles/{imageName}",produces = MediaType.IMAGE_JPEG_VALUE)
 	public void downloadImage(@PathVariable("imageName") String imageName, HttpServletResponse response) throws IOException{
 		InputStream resource = this.fileService.getResource(path, imageName);
